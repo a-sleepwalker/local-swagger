@@ -8,12 +8,12 @@ const CONFIG_PATH = path.join(__dirname, '../public/conf/conf.yml');
 router.get('/editor_config', async (ctx, next) => {
     try {
         ctx.set('content-type', 'application/yaml');
-        ctx.response.body = await readFileAsync(CONFIG_PATH, {
-            encode: 'utf-8',
+        ctx.body = await readFileAsync(CONFIG_PATH, {
+            encoding: 'utf-8',
             flag: 'r'
         });
     } catch (e) {
-        ctx.response.body = {
+        ctx.body = {
             code: 'app-50x',
             message: e.message
         };
